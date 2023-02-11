@@ -1,9 +1,11 @@
+// import necessary parts of sequelize library
 const { Model, DataTypes } = require('sequelize');
-
+// import our database connection from config.js
 const sequelize = require('../config/connection.js');
 
 class Tag extends Model {}
 
+// Initialize the Tag model and define its properties and options
 Tag.init(
   {
     // define columns
@@ -26,4 +28,5 @@ Tag.init(
   }
 );
 
+ // Export
 module.exports = Tag;

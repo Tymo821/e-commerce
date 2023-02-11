@@ -1,9 +1,11 @@
+// import necessary parts of sequelize library
 const { Model, DataTypes } = require('sequelize');
-
+// import our database connection from config.js
 const sequelize = require('../config/connection');
 
 class ProductTag extends Model {}
 
+// Initialize the ProductTag model and define its properties and options
 ProductTag.init(
   {
     // define columns
@@ -16,7 +18,6 @@ ProductTag.init(
     product_id: {
       type: DataTypes.INTEGER,
       references: {
-        //This references the 'Category' model, which we set in Category.js as its modelName property
         model: 'product',
         key: 'id',
       },
@@ -24,7 +25,6 @@ ProductTag.init(
     tag_id: {
       type: DataTypes.INTEGER,
       references: {
-        //This references the 'Category' model, which we set in Category.js as its modelName property
         model: 'tag',
         key: 'id',
       },
@@ -39,4 +39,5 @@ ProductTag.init(
   }
 );
 
+ // Export
 module.exports = ProductTag;
