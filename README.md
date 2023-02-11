@@ -20,6 +20,16 @@ To install this project clone the repository from github.
 
 ## Usage
 
+To use this app you will need to first login to mysql and SOURCE the schema.sql
+Next, in the command line run comand "npm run seed"
+Next, in the command line run comand "npm start"
+Navigate to insomnia to test the routes
+
+## Video
+
+
+
+## Screenshot
 
 
 ## License
