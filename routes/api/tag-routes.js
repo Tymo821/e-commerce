@@ -31,15 +31,8 @@ router.get('/:id', async (req, res) => {
 
 router.post('/', async (req, res) => {
   // create a new tag
-  /* req.body should look like this...
-    {
-      tag_name: "Orange",
-      productIds: [1, 2, 3, 4]
-    }
-  */
   try {
     const tagData = await Tag.create(req.body);
-
     // if there's product tags, we need to create pairings to bulk create in the ProductTag model
     if (req.body.productIds.length) {
       const productTagIdArr = req.body.productIds.map((productId) => {
@@ -88,8 +81,6 @@ router.put('/:id', async (req, res) => {
     .filter(({ product_id }) => !req.body.productIds.includes(product_id))
     .map(({ id}) => id);
       
-    // const removedProductTags = await ProductTag.detroy({ where: { id: productTagsToRemove } });
-    // const updatedProductTags = await ProductTag.bulkCreate(newProductTags);
     const updatedProductTags = await Promise.all([
       ProductTag.destroy({ where: { id: productTagsToRemove } }),
       ProductTag.bulkCreate(newProductTags),
